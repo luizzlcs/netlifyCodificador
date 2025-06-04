@@ -45,7 +45,7 @@
       font-size: 1.5rem;
     }
 
-    textarea, input[type="password"] {
+    textarea {
       width: 100%;
       padding: 12px;
       border-radius: 10px;
@@ -58,9 +58,41 @@
       font-size: 1rem;
     }
 
-    textarea::placeholder,
+    textarea::placeholder {
+      color: rgba(255,255,255,0.6);
+    }
+
+    .password-wrapper {
+      position: relative;
+      margin-bottom: 15px;
+    }
+
+    input[type="password"],
+    input[type="text"].showing {
+      width: 100%;
+      padding: 12px 40px 12px 12px;
+      border-radius: 10px;
+      border: none;
+      background-color: rgba(255,255,255,0.1);
+      color: white;
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.6);
+      font-size: 1rem;
+    }
+
     input::placeholder {
       color: rgba(255,255,255,0.6);
+    }
+
+    .toggle-password {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #00ffe5;
+      cursor: pointer;
+      font-size: 1rem;
     }
 
     .buttons {
@@ -137,7 +169,12 @@
 
     <textarea id="texto" rows="4" placeholder="Digite seu texto aqui"></textarea>
 
-    <input type="password" id="senha" placeholder="Digite a senha">
+    <div class="password-wrapper">
+      <input type="password" id="senha" placeholder="Digite a senha">
+      <button class="toggle-password" onclick="toggleSenha()" title="Mostrar ou ocultar senha">
+        <i id="iconeSenha" class="fas fa-eye"></i>
+      </button>
+    </div>
 
     <div class="buttons">
       <button onclick="criptografar()">
@@ -192,9 +229,23 @@
     function copiarResultado() {
       const resultado = document.getElementById('resultado');
       resultado.select();
-      resultado.setSelectionRange(0, 99999); // Para dispositivos móveis
+      resultado.setSelectionRange(0, 99999);
       document.execCommand("copy");
       alert("Resultado copiado!");
+    }
+
+    function toggleSenha() {
+      const senhaInput = document.getElementById('senha');
+      const icone = document.getElementById('iconeSenha');
+      if (senhaInput.type === 'password') {
+        senhaInput.type = 'text';
+        icone.classList.remove('fa-eye');
+        icone.classList.add('fa-eye-slash');
+      } else {
+        senhaInput.type = 'password';
+        icone.classList.remove('fa-eye-slash');
+        icone.classList.add('fa-eye');
+      }
     }
   </script>
 </body>
