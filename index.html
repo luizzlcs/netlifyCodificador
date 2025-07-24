@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Criptografador AES</title>
+  <title>Cofre de senhas</title>
   <meta name="description" content="Ferramenta online de criptografia AES com senha. Proteja textos, mensagens e informações sensíveis de forma segura e rápida, utilizando criptografia avançada diretamente no navegador.">
   <link rel="icon" href="https://images.icon-icons.com/2104/PNG/512/padlock_icon_129399.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -13,9 +13,19 @@
 
 <body>
   <div class="container">
-    <h2><i class="fas fa-lock"></i> Criptografador AES com Senha</h2>
+    <h2><i class="fas fa-lock"></i> Cofre de Senhas</h2>
 
-    <textarea id="texto" rows="4" placeholder="Digite seu texto aqui"></textarea>
+    <div class="input-area">
+      <textarea id="texto" rows="4" placeholder="Digite seu texto aqui"></textarea>
+      <div class="input-buttons">
+        <button class="input-action" onclick="copiarTexto()" title="Copiar texto">
+          <i class="fas fa-copy"></i>
+        </button>
+        <button class="input-action" onclick="limparTexto()" title="Limpar texto">
+          <i class="fas fa-trash-alt"></i>
+        </button>
+      </div>
+    </div>
 
     <div class="password-wrapper">
       <input type="password" id="senha" placeholder="Digite a senha">
@@ -33,11 +43,16 @@
       </button>
     </div>
 
-    <div class="resultado-area">
+    <div class="input-area">
       <textarea id="resultado" rows="4" placeholder="Resultado..."></textarea>
-      <button class="copy-button" onclick="copiarResultado()">
-        <i class="fas fa-copy"></i> Copiar
-      </button>
+      <div class="input-buttons">
+        <button class="input-action" onclick="copiarResultado()" title="Copiar resultado">
+          <i class="fas fa-copy"></i>
+        </button>
+        <button class="input-action" onclick="limparResultado()" title="Limpar resultado">
+          <i class="fas fa-trash-alt"></i>
+        </button>
+      </div>
     </div>
   </div>
 
@@ -74,12 +89,28 @@
       }
     }
 
+    function copiarTexto() {
+      const texto = document.getElementById('texto');
+      texto.select();
+      texto.setSelectionRange(0, 99999);
+      document.execCommand("copy");
+      alert("Texto copiado!");
+    }
+    
+    function limparTexto() {
+      document.getElementById('texto').value = '';
+    }
+    
     function copiarResultado() {
       const resultado = document.getElementById('resultado');
       resultado.select();
       resultado.setSelectionRange(0, 99999);
       document.execCommand("copy");
       alert("Resultado copiado!");
+    }
+    
+    function limparResultado() {
+      document.getElementById('resultado').value = '';
     }
 
     function toggleSenha() {

@@ -33,12 +33,16 @@ h2 {
   font-size: 1.5rem;
 }
 
+.input-area {
+  position: relative;
+  margin-bottom: 15px;
+}
+
 textarea {
   width: 100%;
   padding: 12px;
   border-radius: 10px;
   border: none;
-  margin-bottom: 15px;
   resize: none;
   background-color: rgba(255, 255, 255, 0.1);
   color: white;
@@ -48,6 +52,33 @@ textarea {
 
 textarea::placeholder {
   color: rgba(255, 255, 255, 0.6);
+}
+
+.input-buttons {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  gap: 5px;
+}
+
+.input-action {
+  background-color: #00ffe5;
+  color: #0f2027;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.input-action:hover {
+  background-color: #00ccb9;
+  transform: scale(1.1);
 }
 
 .password-wrapper {
@@ -115,32 +146,6 @@ button {
 }
 
 button:hover {
-  background-color: #00ccb9;
-  transform: scale(1.05);
-}
-
-.resultado-area {
-  position: relative;
-}
-
-.copy-button {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  background-color: #00ffe5;
-  color: #0f2027;
-  border: none;
-  border-radius: 50px;
-  padding: 6px 12px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  transition: background-color 0.3s, transform 0.2s;
-}
-
-.copy-button:hover {
   background-color: #00ccb9;
   transform: scale(1.05);
 }
